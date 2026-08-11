@@ -12,7 +12,3 @@ npm run dev
 ```
 
 Then open http://localhost:3000. `npm run build` for a production build.
-
-## TODO
-
-- [ ] Replace default `app/favicon.ico` with a real favicon during the rebuild
