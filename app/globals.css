@@ -49,9 +49,9 @@
 }
 
 :root {
-  /* Temporary placeholder-site palette: near-black bg, white text */
-  --background: #090806;
-  --foreground: #ffffff;
+  /* Temporary placeholder-site palette: warm cream bg, near-black text */
+  --background: #ebe4db;
+  --foreground: #090806;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
