@@ -4,7 +4,7 @@ const linkStyle =
 export default function Home() {
   return (
     <main className="flex min-h-svh items-center justify-center px-6 py-16">
-      <div className="font-hand max-w-xl text-2xl leading-relaxed sm:text-3xl sm:leading-relaxed">
+      <div className="font-hand max-w-xl text-2xl leading-relaxed text-pretty sm:text-3xl sm:leading-relaxed">
         <p>Hey there,</p>
         <p className="mt-10">
           Thanks for visiting my site. I&apos;m currently remaking
@@ -18,16 +18,14 @@ export default function Home() {
           >
             LinkedIn
           </a>{" "}
-          or{" "}
-          <a
+          or&nbsp;<a
             href="https://x.com/designtrev"
             target="_blank"
             rel="noopener noreferrer"
             className={linkStyle}
           >
             X
-          </a>{" "}
-          if you&apos;d like.
+          </a>&nbsp;if you&apos;d&nbsp;like.
         </p>
         <p className="mt-10">- Trevor</p>
         <p className="mt-10">
@@ -40,7 +38,7 @@ export default function Home() {
           >
             Discoverable Designer
           </a>
-          , a newsletter about getting seen as a designer.
+          , a newsletter about getting seen as&nbsp;a&nbsp;designer.
         </p>
       </div>
     </main>
