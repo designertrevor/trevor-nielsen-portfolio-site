@@ -1,8 +1,5 @@
-const socials = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/trevordesign/" },
-  { label: "X", href: "https://x.com/designtrev" },
-  { label: "Newsletter", href: "https://www.discoverabledesigner.com" },
-];
+const linkStyle =
+  "underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white";
 
 export default function Home() {
   return (
@@ -11,24 +8,39 @@ export default function Home() {
         <p>
           Hey there, thanks for visiting my site. I&apos;m currently remaking
           it (in case that isn&apos;t obvious enough). I&apos;ll be making
-          updates publicly &mdash; you can follow along on my socials if
-          you&apos;d like.
+          updates publicly. You can follow along on{" "}
+          <a
+            href="https://www.linkedin.com/in/trevordesign/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkStyle}
+          >
+            LinkedIn
+          </a>{" "}
+          or{" "}
+          <a
+            href="https://x.com/designtrev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkStyle}
+          >
+            X
+          </a>{" "}
+          if you&apos;d like.
         </p>
-        <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
-          {socials.map(({ label, href }) => (
-            <li key={label}>
-              <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-              >
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
         <p className="mt-10">- Trevor</p>
+        <p className="mt-10 text-xl sm:text-2xl">
+          P.S. I also write{" "}
+          <a
+            href="https://www.discoverabledesigner.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={linkStyle}
+          >
+            Discoverable Designer
+          </a>
+          , a newsletter about getting seen as a designer.
+        </p>
       </div>
     </main>
   );
