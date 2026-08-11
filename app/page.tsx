@@ -5,8 +5,9 @@ export default function Home() {
   return (
     <main className="flex min-h-svh items-center justify-center px-6 py-16">
       <div className="font-hand max-w-xl text-2xl leading-relaxed sm:text-3xl sm:leading-relaxed">
-        <p>
-          Hey there, thanks for visiting my site. I&apos;m currently remaking
+        <p>Hey there,</p>
+        <p className="mt-10">
+          Thanks for visiting my site. I&apos;m currently remaking
           it (in case that isn&apos;t obvious enough). I&apos;ll be making
           updates publicly. You can follow along on{" "}
           <a
@@ -29,7 +30,7 @@ export default function Home() {
           if you&apos;d like.
         </p>
         <p className="mt-10">- Trevor</p>
-        <p className="mt-10 text-xl sm:text-2xl">
+        <p className="mt-10">
           P.S. I also write{" "}
           <a
             href="https://www.discoverabledesigner.com"
