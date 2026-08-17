@@ -1,3 +1,5 @@
+import { TrackedLink } from "@/components/tracked-link";
+
 const linkStyle =
   "underline decoration-foreground/40 underline-offset-4 transition-colors hover:decoration-foreground focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-foreground";
 
@@ -10,34 +12,34 @@ export default function Home() {
           Thanks for visiting my site. I&apos;m currently remaking
           it (in case that isn&apos;t obvious enough). I&apos;ll be making
           updates publicly. You can follow along on{" "}
-          <a
+          <TrackedLink
             href="https://www.linkedin.com/in/trevordesign/"
-            target="_blank"
-            rel="noopener noreferrer"
+            destination="LinkedIn"
+            placement="intro"
             className={linkStyle}
           >
             LinkedIn
-          </a>{" "}
-          or&nbsp;<a
+          </TrackedLink>{" "}
+          or&nbsp;<TrackedLink
             href="https://x.com/designtrev"
-            target="_blank"
-            rel="noopener noreferrer"
+            destination="X"
+            placement="intro"
             className={linkStyle}
           >
             X
-          </a>&nbsp;if you&apos;d&nbsp;like.
+          </TrackedLink>&nbsp;if you&apos;d&nbsp;like.
         </p>
         <p className="mt-10">- Trevor</p>
         <p className="mt-10">
           P.S. I also write{" "}
-          <a
+          <TrackedLink
             href="https://www.discoverabledesigner.com"
-            target="_blank"
-            rel="noopener noreferrer"
+            destination="Discoverable Designer"
+            placement="postscript"
             className={linkStyle}
           >
             Discoverable Designer
-          </a>
+          </TrackedLink>
           , a newsletter about getting seen as&nbsp;a&nbsp;designer.
         </p>
       </div>
