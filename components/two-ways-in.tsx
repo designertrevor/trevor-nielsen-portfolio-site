@@ -1,4 +1,5 @@
 import { Eyebrow } from "@/components/eyebrow";
+import { SurveyorGrid } from "@/components/texture";
 import { Reveal } from "@/components/reveal";
 import { TintPanel } from "@/components/tint-panel";
 
@@ -7,7 +8,18 @@ import { TintPanel } from "@/components/tint-panel";
    border: it is the emphasized option. */
 export function TwoWaysIn() {
   return (
-    <section className="border-b border-border px-6 py-16 sm:px-9 sm:py-20">
+    <section className="relative isolate border-b border-border px-6 py-16 sm:px-9 sm:py-20">
+      {/* Surveyor grid: planning/scoping terrain under the two engagement
+          cards, fading out toward the section edges */}
+      <SurveyorGrid
+        className="opacity-60"
+        style={{
+          maskImage:
+            "radial-gradient(ellipse 75% 90% at 50% 50%, black 40%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 75% 90% at 50% 50%, black 40%, transparent 100%)",
+        }}
+      />
       <Reveal>
         <Eyebrow as="h2" className="mb-11 text-center">
           Two ways in

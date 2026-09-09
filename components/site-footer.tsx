@@ -33,19 +33,8 @@ export function SiteFooter() {
             "linear-gradient(to top, black 40%, transparent 100%)",
         }}
       />
-      <span className="flex items-center gap-3">
-        {/* Discoverable Designer lantern stamp, printed in light ink */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/textures/06-stamp.webp"
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          className="size-16 invert mix-blend-screen opacity-40"
-        />
-        <span>
-          © Trevor Nielsen · Smithfield, UT · <LocalClock />
-        </span>
+      <span>
+        © Trevor Nielsen · Smithfield, UT · <LocalClock />
       </span>
       {/* TODO: Trevor supplies the real sign-off line */}
       <span className="italic">Fun personal sign-off line goes here</span>

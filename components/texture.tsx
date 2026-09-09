@@ -103,7 +103,10 @@ export function SurveyorGrid({
   return (
     <div
       aria-hidden="true"
-      className={cn("pointer-events-none absolute inset-0 -z-10", className)}
+      className={cn(
+        "pointer-events-none absolute inset-0 -z-10 dark:invert",
+        className
+      )}
       style={{
         backgroundImage: `url("data:image/svg+xml,${svg.replace(/\n\s*/g, " ")}")`,
         backgroundRepeat: "repeat",
