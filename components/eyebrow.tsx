@@ -23,7 +23,7 @@ export function Eyebrow({
 }: {
   children: React.ReactNode;
   className?: string;
-  as?: "p" | "span";
+  as?: "p" | "span" | "h2" | "h3";
   size?: keyof typeof sizes;
   tone?: keyof typeof tones;
 }) {

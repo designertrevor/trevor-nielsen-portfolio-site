@@ -30,6 +30,60 @@ function frames(slug: string, labels: string[]): WorkFrame[] {
   }));
 }
 
+export type Brand = {
+  slug: string;
+  name: string;
+  /* The short mark shown on the tile at rest (first frame placeholder) */
+  mark: string;
+  frames: WorkFrame[];
+};
+
+export const BRANDS: Brand[] = [
+  {
+    slug: "saddle-rock",
+    name: "Saddle Rock",
+    mark: "SR",
+    frames: frames("brands/saddle-rock", ["Mark", "Signage", "Business card", "App icon"]),
+  },
+  {
+    slug: "linkd-performance",
+    name: "Linkd Performance",
+    mark: "▲▲",
+    frames: frames("brands/linkd-performance", ["Mark", "Signage", "Business card", "App icon"]),
+  },
+  {
+    slug: "meridian",
+    name: "Meridian",
+    mark: "M◈",
+    frames: frames("brands/meridian", ["Mark", "Signage", "Business card", "App icon"]),
+  },
+  {
+    slug: "bandit",
+    name: "Bandit",
+    mark: "BB",
+    frames: frames("brands/bandit", ["Mark", "Packaging", "Tote", "Sticker"]),
+  },
+  {
+    slug: "rivet-health",
+    name: "Rivet Health",
+    mark: "RH",
+    frames: frames("brands/rivet-health", ["Mark", "Style guide", "App icon"]),
+  },
+  {
+    slug: "cheal-king",
+    name: "Cheal King",
+    mark: "CK",
+    frames: frames("brands/cheal-king", ["Mark", "Badge set", "Poster"]),
+  },
+];
+
+export const WEBSITES: WorkFrame[] = frames("websites", [
+  "Rock Creek Crates",
+  "LabFinder",
+  "Nuage",
+  "Adan",
+]);
+
 export const PROJECTS: WorkProject[] = [
   {
     slug: "kleo",
