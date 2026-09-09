@@ -1,4 +1,5 @@
 import { CopyEmailButton } from "@/components/copy-email-button";
+import { ContourLayer, GlowHalftone } from "@/components/texture";
 import { LocalClock } from "@/components/local-clock";
 import { TrackedLink } from "@/components/tracked-link";
 import { Button } from "@/components/ui/button";
@@ -24,7 +25,18 @@ const SOCIALS = [
    section on mobile. */
 export function Rail() {
   return (
-    <header className="flex flex-col border-b border-border px-6 py-8 lg:sticky lg:top-0 lg:h-dvh lg:self-start lg:border-r lg:border-b-0 lg:px-9 lg:py-10">
+    <header className="relative isolate flex flex-col border-b border-border px-6 py-8 lg:sticky lg:top-0 lg:h-dvh lg:self-start lg:border-r lg:border-b-0 lg:px-9 lg:py-10">
+      {/* Contour wash, strongest in the empty space at the bottom of the
+          rail, fading out under the text */}
+      <ContourLayer
+        className="opacity-35"
+        style={{
+          maskImage:
+            "linear-gradient(to top, black 25%, rgba(0,0,0,0.3) 55%, transparent 80%)",
+          WebkitMaskImage:
+            "linear-gradient(to top, black 25%, rgba(0,0,0,0.3) 55%, transparent 80%)",
+        }}
+      />
       <div className="rise rise-1 flex items-center justify-between gap-4">
         <span className="font-sans text-base font-extrabold tracking-tight">
           trevor nielsen
@@ -34,13 +46,14 @@ export function Rail() {
         </span>
       </div>
 
-      <span className="rise rise-2 mt-9 inline-flex items-center gap-2 self-start rounded-full border border-border px-4 py-2 font-sans text-xs font-semibold">
-        <span
-          aria-hidden="true"
-          className="size-2 rounded-full bg-success"
-        />
-        Available for new projects
-      </span>
+      <div className="rise rise-2 relative mt-9 self-start">
+        {/* Faint lantern-glow patch centered behind the badge */}
+        <GlowHalftone className="top-1/2 left-1/2 size-[230px] -translate-x-1/2 -translate-y-1/2 opacity-[0.05]" />
+        <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 font-sans text-xs font-semibold">
+          <span aria-hidden="true" className="size-2 rounded-full bg-success" />
+          Available for new projects
+        </span>
+      </div>
 
       <h1 className="rise rise-3 mt-5 font-serif text-[34px] leading-[1.1] font-semibold tracking-tight text-balance">
         Senior product design for teams with a gap to fill.

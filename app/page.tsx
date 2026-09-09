@@ -5,6 +5,7 @@ import { Rail } from "@/components/rail";
 import { Reveal } from "@/components/reveal";
 import { SiteFooter } from "@/components/site-footer";
 import { Testimonials } from "@/components/testimonials";
+import { ContourLayer } from "@/components/texture";
 import { TwoWaysIn } from "@/components/two-ways-in";
 import { WebsitesSection } from "@/components/websites-section";
 import { WorkProjectSection } from "@/components/work-project";
@@ -21,7 +22,8 @@ export default function Home() {
         ))}
         <BrandingSection />
         <WebsitesSection />
-        <section className="border-b border-border px-6 py-16 text-center sm:px-9 sm:py-22">
+        <section className="relative isolate border-b border-border px-6 py-16 text-center sm:px-9 sm:py-22">
+          <ContourLayer className="opacity-25" />
           <Reveal>
             <Eyebrow as="h2" className="mb-11">
               What clients say
