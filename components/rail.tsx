@@ -29,8 +29,11 @@ export function Rail() {
       {/* Contour wash, strongest in the empty space at the bottom of the
           rail, fading out under the text */}
       <ContourLayer
+        density="lightTall"
         className="opacity-35"
         style={{
+          backgroundSize: "512px auto",
+          backgroundPosition: "bottom",
           maskImage:
             "linear-gradient(to top, black 25%, rgba(0,0,0,0.3) 55%, transparent 80%)",
           WebkitMaskImage:

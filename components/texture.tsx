@@ -9,8 +9,13 @@ import { cn } from "@/lib/utils";
    - Static only, aria-hidden, pointer-events-none, -z-10 inside a
      positioned, isolated parent (`relative isolate`). */
 
+/* Artwork ships at native resolution (1536px landscape / rotated portrait
+   for the tall rail). Draw it at or below native device pixels — size with
+   an explicit backgroundSize at ~half the source's pixel width for retina
+   1:1 — rather than letting `cover` upscale it, or the lines go soft. */
 const CONTOURS = {
   light: "/textures/01-contour-light.webp",
+  lightTall: "/textures/01-contour-light-tall.webp",
   dense: "/textures/02-contour-dense.webp",
 } as const;
 
