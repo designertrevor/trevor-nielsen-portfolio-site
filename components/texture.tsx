@@ -35,7 +35,10 @@ export function ContourLayer({
     <div
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 -z-10 mix-blend-multiply",
+        /* Multiply sinks the art's white ground into the paper; on dark
+           grounds (dark mode, the footer panel) invert + screen flips the
+           same art to faint light linework instead */
+        "pointer-events-none absolute inset-0 -z-10 mix-blend-multiply dark:invert dark:mix-blend-screen",
         className
       )}
       style={{

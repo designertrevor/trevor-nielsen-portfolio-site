@@ -1,5 +1,6 @@
 import { CopyEmailButton } from "@/components/copy-email-button";
 import { ContourLayer, GlowHalftone } from "@/components/texture";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { LocalClock } from "@/components/local-clock";
 import { TrackedLink } from "@/components/tracked-link";
 import { Button } from "@/components/ui/button";
@@ -44,8 +45,11 @@ export function Rail() {
         <span className="font-sans text-base font-extrabold tracking-tight">
           trevor nielsen
         </span>
-        <span className="text-xs text-muted-foreground">
-          Smithfield · <LocalClock />
+        <span className="flex items-center gap-1.5">
+          <span className="text-xs text-muted-foreground">
+            Smithfield · <LocalClock />
+          </span>
+          <ThemeToggle className="size-8 sm:size-8" />
         </span>
       </div>
 

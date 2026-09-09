@@ -3,6 +3,8 @@ import { Crimson_Pro, Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
+import { ThemeProvider } from "@/components/theme-provider";
+
 const crimson = Crimson_Pro({
   variable: "--font-crimson",
   subsets: ["latin"],
@@ -14,8 +16,12 @@ const manrope = Manrope({
   subsets: ["latin"],
 });
 
+/* Tracks --background light/dark in globals.css */
 export const viewport: Viewport = {
-  themeColor: "#f7f6f3",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f6f3" },
+    { media: "(prefers-color-scheme: dark)", color: "#1d1b19" },
+  ],
 };
 
 export const metadata: Metadata = {
@@ -39,9 +45,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${crimson.variable} ${manrope.variable}`}>
+    <html
+      lang="en"
+      className={`${crimson.variable} ${manrope.variable}`}
+      suppressHydrationWarning
+    >
       <body className="antialiased">
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         <Analytics />
       </body>
     </html>

@@ -1,4 +1,5 @@
 import { LocalClock } from "@/components/local-clock";
+import { ContourLayer } from "@/components/texture";
 import { TrackedLink } from "@/components/tracked-link";
 import { SITE } from "@/lib/site";
 
@@ -17,11 +18,34 @@ const SOCIALS = [
 export function SiteFooter() {
   return (
     <footer
-      className="flex flex-wrap items-center justify-between gap-2.5 bg-panel px-6 py-6 text-[13px] text-panel-foreground/70 sm:px-9"
+      className="relative isolate flex flex-wrap items-center justify-between gap-2.5 overflow-hidden bg-panel px-6 py-6 text-[13px] text-panel-foreground/70 sm:px-9"
       style={{ backgroundImage: "var(--grain)" }}
     >
-      <span>
-        © Trevor Nielsen · Smithfield, UT · <LocalClock />
+      {/* Dense terrain strip along the bottom edge; the panel is dark in
+          both themes, so the art is always inverted to light linework */}
+      <ContourLayer
+        density="dense"
+        className="invert mix-blend-screen opacity-[0.13]"
+        style={{
+          backgroundPosition: "bottom",
+          maskImage: "linear-gradient(to top, black 40%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to top, black 40%, transparent 100%)",
+        }}
+      />
+      <span className="flex items-center gap-3">
+        {/* Discoverable Designer lantern stamp, printed in light ink */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/textures/06-stamp.webp"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          className="size-16 invert mix-blend-screen opacity-40"
+        />
+        <span>
+          © Trevor Nielsen · Smithfield, UT · <LocalClock />
+        </span>
       </span>
       {/* TODO: Trevor supplies the real sign-off line */}
       <span className="italic">Fun personal sign-off line goes here</span>

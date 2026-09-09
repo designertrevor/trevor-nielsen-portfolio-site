@@ -1,4 +1,5 @@
 import { CopyEmailButton } from "@/components/copy-email-button";
+import { ContourLayer, GlowHalftone } from "@/components/texture";
 import { Reveal } from "@/components/reveal";
 import { TrackedLink } from "@/components/tracked-link";
 import { Button } from "@/components/ui/button";
@@ -6,7 +7,11 @@ import { SITE } from "@/lib/site";
 
 export function FinalCta() {
   return (
-    <section className="px-6 py-20 text-center sm:px-9 sm:py-24">
+    <section className="relative isolate px-6 py-20 text-center sm:px-9 sm:py-24">
+      <ContourLayer className="opacity-25" />
+      {/* Lantern glow centered behind the heading, a notch above the badge
+          instance but still a whisper */}
+      <GlowHalftone className="top-28 left-1/2 size-[420px] -translate-x-1/2 -translate-y-1/2 opacity-[0.07] sm:top-32" />
       <Reveal>
         <h2 className="font-serif text-4xl leading-tight font-semibold tracking-tight text-balance sm:text-[44px]">
           Have a gap to fill?
