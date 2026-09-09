@@ -25,6 +25,7 @@ export function FlashImage({
   const [engaged, setEngaged] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
   const reducedMotion = useRef(false);
+  const hoverCapable = useRef(false);
 
   function stop() {
     if (timer.current) clearInterval(timer.current);
@@ -35,10 +36,14 @@ export function FlashImage({
     reducedMotion.current = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
+    hoverCapable.current = window.matchMedia("(hover: hover)").matches;
     return stop;
   }, []);
 
   function handleEnter() {
+    /* Touch fires a phantom mouseenter before the tap; without real hover,
+       the click handler owns the interaction (one frame per tap) */
+    if (!hoverCapable.current) return;
     setEngaged(true);
     if (reducedMotion.current) {
       setIndex((i) => (i + 1) % frames.length);
@@ -52,6 +57,8 @@ export function FlashImage({
   }
 
   function handleLeave() {
+    /* Touch fires stray mouseleaves too; keep the tapped frame in place */
+    if (!hoverCapable.current) return;
     stop();
     setEngaged(false);
     setIndex(0);

@@ -26,7 +26,7 @@ const SOCIALS = [
    section on mobile. */
 export function Rail() {
   return (
-    <header className="relative isolate flex flex-col border-b border-border px-6 py-8 lg:sticky lg:top-0 lg:h-dvh lg:self-start lg:border-r lg:border-b-0 lg:px-9 lg:py-10">
+    <header className="relative isolate flex flex-col overflow-hidden border-b border-border px-6 py-8 lg:sticky lg:top-0 lg:h-dvh lg:self-start lg:border-r lg:border-b-0 lg:px-9 lg:py-10">
       {/* Contour wash, strongest in the empty space at the bottom of the
           rail, fading out under the text */}
       <ContourLayer

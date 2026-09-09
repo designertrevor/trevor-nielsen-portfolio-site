@@ -82,7 +82,7 @@ export function Testimonials() {
       <p className="mt-5 min-h-[22px] text-sm text-muted-foreground">
         {active.attribution}
       </p>
-      <div className="mt-9 flex min-h-[76px] items-center justify-center gap-5">
+      <div className="mt-9 flex min-h-[76px] items-center justify-center gap-3 sm:gap-5">
         {QUOTES.map((quote, i) => {
           const isActive = i === index;
           return (

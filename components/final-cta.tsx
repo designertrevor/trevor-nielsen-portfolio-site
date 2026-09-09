@@ -7,7 +7,7 @@ import { SITE } from "@/lib/site";
 
 export function FinalCta() {
   return (
-    <section className="relative isolate px-6 py-20 text-center sm:px-9 sm:py-24">
+    <section className="relative isolate overflow-hidden px-6 py-20 text-center sm:px-9 sm:py-24">
       <ContourLayer className="opacity-25" />
       {/* Lantern glow centered behind the heading, a notch above the badge
           instance but still a whisper */}
