@@ -1,23 +1,20 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-hand: var(--font-caveat);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
+  --color-tint-blue: var(--tint-blue);
+  --color-tint-pink: var(--tint-pink);
+  --color-tint-sand: var(--tint-sand);
+  --color-tint-blue-base: var(--tint-blue-base);
+  --color-tint-pink-base: var(--tint-pink-base);
+  --color-tint-sand-base: var(--tint-sand-base);
+  --color-panel: var(--panel);
+  --color-panel-foreground: var(--panel-foreground);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-crimson);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
   --color-chart-3: var(--chart-3);
@@ -27,6 +24,13 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-destructive-soft: var(--destructive-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -49,83 +53,430 @@
 }
 
 :root {
-  /* Temporary placeholder-site palette: warm cream bg, near-black text */
-  --background: #ebe4db;
-  --foreground: #090806;
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.58 0.22 27);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  color-scheme: light;
+
+  /* The literal poster pastels. Never overridden — dark mode derives its own
+     tints from these, so both themes stay on the one set of brand hues. */
+  --tint-blue-base: #d3d8eb;
+  --tint-pink-base: #e7dae4;
+  --tint-sand-base: #ebe4db;
+
+  /* Poster palette: Trevor's social-post system — paper, espresso ink,
+     and rotating pastel surfaces (blue/pink/sand) under grain */
+  --background: #f7f6f3;
+  --foreground: #2d1f1a;
+  --card: #ffffff;
+  --card-foreground: #2d1f1a;
+  --popover: #ffffff;
+  --popover-foreground: #2d1f1a;
+  --primary: #2d1f1a;
+  --primary-foreground: #ffffff;
+  --secondary: #e3e2dc;
+  --secondary-foreground: #2d1f1a;
+  --muted: #eceae3;
+  --muted-foreground: #6e635c;
+  --accent: #e3e2dc;
+  --accent-foreground: #2d1f1a;
+  /* Status colors: designed into the warm palette, contrast-checked ≥4.5:1
+     for solid-on-paper, solid-on-its-soft, and white-on-solid. Softs are the
+     badge/callout fills — always paired with the solid as the text on top. */
+  --destructive: #a92e22;
+  --success: #3e6249;
+  --warning: #7d5410;
+  --info: #44567e;
+  --destructive-soft: color-mix(in srgb, var(--destructive) 14%, var(--background));
+  --success-soft: color-mix(in srgb, var(--success) 14%, var(--background));
+  --warning-soft: color-mix(in srgb, var(--warning) 14%, var(--background));
+  --info-soft: color-mix(in srgb, var(--info) 14%, var(--background));
+  --border: #ddd8cd;
+  --input: #ddd8cd;
+  --ring: #2d1f1a;
+  --tint-blue: var(--tint-blue-base);
+  --tint-pink: var(--tint-pink-base);
+  --tint-sand: var(--tint-sand-base);
+  /* Inset dark panel (the footer). Dark in BOTH themes, so it deliberately
+     does not invert; in dark it lifts a step so the panel edge stays read-
+     able against the page. */
+  --panel: #1d1b19;
+  --panel-foreground: #f7f6f3;
+  /* Poster cards throw a hard offset shadow in a darkened version of their
+     own tint — never gray. Dark mode swaps these for a light offset edge,
+     since a dark shadow is invisible against a near-black page. */
+  --shadow-blue: color-mix(in srgb, var(--tint-blue) 35%, #000);
+  --shadow-pink: color-mix(in srgb, var(--tint-pink) 35%, #000);
+  --shadow-sand: color-mix(in srgb, var(--tint-sand) 35%, #000);
+  --image-outline: rgba(0, 0, 0, 0.1);
+  /* Categorical chart palette derived from the brand hues (slate from the
+     blue tint, ochre near sand, mauve from the pink, moss, espresso) —
+     ordered so adjacent series stay distinguishable. */
+  --chart-1: #56679b;
+  --chart-2: #b1832f;
+  --chart-3: #8e5f7f;
+  --chart-4: #5c7d63;
+  --chart-5: #2d1f1a;
+  /* Sharp corners everywhere — every radius token derives from this */
+  --radius: 0rem;
 }
 
+/* Dark mode keeps the page on the deepest brand shade and builds every
+   raised surface by mixing white INTO that background rather than tinting it
+   — tinted surfaces read as muddy red-brown at this value. Text stays warm
+   (paper cream); only surfaces go neutral. The mixes are opaque on purpose:
+   a translucent card would let its own offset shadow show through it.
+   Percentages are the elevation scale and are safe to tune. */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.87 0.00 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.371 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  color-scheme: dark;
+  --background: #1d1b19;
+  --surface-1: color-mix(in srgb, #fff 6%, var(--background));
+  --surface-2: color-mix(in srgb, #fff 12%, var(--background));
+  --surface-3: color-mix(in srgb, #fff 20%, var(--background));
+
+  --foreground: #f7f6f3;
+  /* --card paints input fills (ui/input.tsx is bg-card), so inputs land a
+     step above whatever panel or card they sit on. */
+  --card: var(--surface-2);
+  --card-foreground: #f7f6f3;
+  --popover: var(--surface-1);
+  --popover-foreground: #f7f6f3;
+  --primary: #f7f6f3;
+  --primary-foreground: #2d1f1a;
+  --secondary: var(--surface-1);
+  --secondary-foreground: #f7f6f3;
+  /* Hover-only everywhere in this app: nav links, theme toggle, share pills,
+     edition rows. Nothing sits on it at rest. */
+  --muted: var(--surface-2);
+  /* Mirrors light mode's ~6:1 secondary-text contrast; the palette's own
+     light shades all land near 12:1 and would not read as muted. */
+  --muted-foreground: color-mix(in srgb, #f7f6f3 62%, #1d1b19);
+  --accent: var(--surface-1);
+  --accent-foreground: #f7f6f3;
+  /* Status solids lighten for dark use; softs mix a bit more pigment (18%)
+     so the chips stay visible against the near-black page. */
+  --destructive: #ea8177;
+  --success: #97c2a3;
+  --warning: #d9a862;
+  --info: #a9b8dd;
+  --destructive-soft: color-mix(in srgb, var(--destructive) 18%, var(--background));
+  --success-soft: color-mix(in srgb, var(--success) 18%, var(--background));
+  --warning-soft: color-mix(in srgb, var(--warning) 18%, var(--background));
+  --info-soft: color-mix(in srgb, var(--info) 18%, var(--background));
+  --border: color-mix(in srgb, #fff 14%, var(--background));
+  --input: color-mix(in srgb, #fff 14%, var(--background));
+  --ring: #f7f6f3;
+  /* Behind cream text in the hero, so this one stays dark-adapted. */
+  --tint-blue: color-mix(in srgb, var(--tint-blue-base) 20%, #1d1b19);
+  --tint-pink: var(--surface-1);
+  --tint-sand: var(--surface-1);
+  --panel: var(--surface-1);
+  --shadow-blue: var(--surface-3);
+  --shadow-pink: var(--surface-3);
+  --shadow-sand: var(--surface-3);
+  --image-outline: rgba(247, 246, 243, 0.14);
+  --chart-1: #93a5d6;
+  --chart-2: #d9ab5f;
+  --chart-3: #c79bb4;
+  --chart-4: #8fb89a;
+  --chart-5: #cfc4bb;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  :root {
+    /* Paper grain — echoes the speckle texture in the brand banners */
+    --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
   body {
     @apply bg-background text-foreground;
+    background-image: var(--grain);
   }
   html {
     @apply font-sans;
   }
+  h1,
+  h2,
+  h3 {
+    @apply font-serif;
+  }
+  ::selection {
+    background: var(--foreground);
+    color: var(--background);
+  }
+}
+
+/* Highlighter stroke behind the hero's typewriter word: sized/positioned to
+   sit low in the line box (clear of the previous line's descenders), and
+   multiply-blended so any overlapping glyphs read through the color. */
+.type-highlight {
+  padding-inline: 0.08em;
+  background-image: linear-gradient(var(--tint-blue), var(--tint-blue));
+  background-repeat: no-repeat;
+  background-size: 100% 72%;
+  background-position: 0 82%;
+  box-decoration-break: clone;
+  mix-blend-mode: multiply;
+}
+/* Multiply over ink turns the stroke near-black; the dark tint already sits
+   correctly behind cream text, so blend normally instead. */
+.dark .type-highlight {
+  mix-blend-mode: normal;
+}
+
+/* ===== Motion ===== */
+
+/* Page-load cascade: split content into chunks, stagger ~100ms apart */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rise {
+  opacity: 0;
+  animation: rise-in 0.7s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+.rise-1 {
+  animation-delay: 0.05s;
+}
+.rise-2 {
+  animation-delay: 0.15s;
+}
+.rise-3 {
+  animation-delay: 0.25s;
+}
+.rise-4 {
+  animation-delay: 0.35s;
+}
+.rise-5 {
+  animation-delay: 0.45s;
+}
+.rise-6 {
+  animation-delay: 0.55s;
+}
+
+/* Scroll reveal (driven by the Reveal component's scroll-position check) */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0, 0, 1),
+    transform 0.7s cubic-bezier(0.2, 0, 0, 1);
+}
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Footer badge: constant slow spin; hovering RUNS a second, additive spin on
+   the inner element instead of changing duration (which would jump). Pausing
+   on unhover freezes the extra rotation in place — no snap. */
+@keyframes spin-360 {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.logo-spin {
+  animation: spin-360 13s linear infinite;
+}
+/* 13s base + 4.33s additive boost ≈ 3.25s effective on hover (4x base) */
+.logo-spin-boost {
+  animation: spin-360 4.33s linear infinite;
+  animation-play-state: paused;
+}
+.logo-hover-zone:hover .logo-spin-boost {
+  animation-play-state: running;
+}
+
+/* Link arrows: on hover the shaft reaches to the right and the head rides
+   out with it. Only length changes — stroke weight, height and baseline all
+   hold, so the arrow keeps matching the text beside it. Scaling the whole
+   glyph instead would thicken the stroke and break that match.
+   scaleX is anchored at the shaft's own left end (5,12), not the viewBox
+   origin, so the tail stays put while the tip travels. */
+.arrow-shaft,
+.arrow-head {
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1);
+}
+.arrow-shaft {
+  transform-origin: 5px 12px;
+}
+/* 14-unit shaft × 1.45 = 20.3, so the head travels the matching 6.3 to stay
+   welded to the tip. */
+.group:hover .arrow-shaft {
+  transform: scaleX(1.45);
+}
+.group:hover .arrow-head {
+  transform: translateX(6.3px);
+}
+
+/* Arrow that isn't there until you hover: a clip wipes it in from tail to
+   tip, so it draws itself into existence rather than fading. It still
+   occupies its space at rest, so revealing it never reflows the row.
+   Deliberately clip-path and not an SVG <mask>: these repeat down a list,
+   and duplicate mask ids all resolve to the first one in the document, so
+   every row's arrow would end up driven by the first row's hover. */
+.arrow-reveal {
+  clip-path: inset(-25% 100% -25% 0);
+  transition: clip-path 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+.group:hover .arrow-reveal {
+  clip-path: inset(-25% -50% -25% 0);
+}
+
+/* Sun/moon toggle: one disc + one path holding all eight rays, morphed by
+   two masks. Going dark, the disc grows while an inverted mask circle slides
+   in from the right to bite out the crescent, and the rays' mask shrinks
+   inside their inner radius so they retract into the center.
+   Driven by the .dark class rather than React state, so the icon is correct
+   on first paint and can never mismatch during hydration. */
+.sunmoon-disc,
+.sunmoon-bite,
+.sunmoon-ray-mask {
+  transform-origin: center;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
+}
+/* Tilts the finished crescent; the disc's mask inherits this rotation. */
+.sunmoon-disc {
+  transform: rotate(-35deg);
+}
+.dark .sunmoon-disc {
+  transform: rotate(-35deg) scale(2);
+}
+.dark .sunmoon-bite {
+  transform: translateX(-18px);
+}
+/* 0.3 lands inside the rays' inner radius (6), so no stubs are left over. */
+.dark .sunmoon-ray-mask {
+  transform: scale(0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+  .logo-spin,
+  .logo-spin-boost {
+    animation: none;
+  }
+  .sunmoon-disc,
+  .sunmoon-bite,
+  .sunmoon-ray-mask,
+  .arrow-shaft,
+  .arrow-head,
+  .arrow-reveal {
+    transition: none;
+  }
+}
+
+/* Poster cards: pastel surface + hard shadow in a darkened version of the
+   SAME tint (never gray). Hover lifts; shadow grows with it. */
+.tint-card {
+  background-image: var(--grain);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+.tint-card:hover {
+  transform: translate(-2px, -2px);
+}
+.card-blue {
+  background-color: var(--tint-blue);
+  box-shadow: 8px 8px 0 0 var(--shadow-blue);
+}
+.card-blue:hover {
+  box-shadow: 11px 11px 0 0 var(--shadow-blue);
+}
+.card-pink {
+  background-color: var(--tint-pink);
+  box-shadow: 8px 8px 0 0 var(--shadow-pink);
+}
+.card-pink:hover {
+  box-shadow: 11px 11px 0 0 var(--shadow-pink);
+}
+.card-sand {
+  background-color: var(--tint-sand);
+  box-shadow: 8px 8px 0 0 var(--shadow-sand);
+}
+.card-sand:hover {
+  box-shadow: 11px 11px 0 0 var(--shadow-sand);
+}
+
+/* Elevation tier 3 — overlays (dialog, dropdown, toast, tooltip): a hard
+   offset in low-alpha ink, never a gray blur. In dark mode --foreground is
+   cream, so the offset reads as a light edge, matching the card shadows. */
+.shadow-overlay {
+  box-shadow: 8px 8px 0 0 color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+
+/* Beehiiv article HTML (inline typography/spacing styles stripped server-side) */
+.article-content {
+  font-family: var(--font-crimson);
+  font-size: 1.1875rem;
+  line-height: 1.65;
+}
+.article-content p {
+  margin-bottom: 1.3rem;
+}
+.article-content h1,
+.article-content h2,
+.article-content h3 {
+  font-family: var(--font-crimson);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 2rem 0 0.75rem;
+}
+.article-content h1 {
+  font-size: 1.75rem;
+}
+.article-content h2 {
+  font-size: 1.5rem;
+}
+.article-content h3 {
+  font-size: 1.25rem;
+}
+.article-content a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.article-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  margin: 1.5rem auto;
+  outline: 1px solid var(--image-outline);
+  outline-offset: -1px;
+}
+.article-content ul,
+.article-content ol {
+  margin: 0 0 1.25rem 1.5rem;
+}
+.article-content ul {
+  list-style: disc;
+}
+.article-content ol {
+  list-style: decimal;
+}
+.article-content li {
+  margin-bottom: 0.5rem;
+}
+.article-content blockquote {
+  border-left: 3px solid var(--border);
+  padding-left: 1rem;
+  font-style: italic;
+  color: var(--muted-foreground);
+  margin: 1.5rem 0;
+}
+.article-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
 }
