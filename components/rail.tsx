@@ -2,6 +2,7 @@ import { ArrowRight } from "@/components/arrow-right";
 import { CopyEmailButton } from "@/components/copy-email-button";
 import { SocialLinks } from "@/components/social-links";
 import { ContourLayer, GlowHalftone } from "@/components/texture";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { LocalClock } from "@/components/local-clock";
 import { TrackedLink } from "@/components/tracked-link";
 import { Button } from "@/components/ui/button";
@@ -128,7 +129,10 @@ export function Rail() {
         <CopyEmailButton className="w-full" />
       </div>
 
-      <SocialLinks placement="rail" className="rise rise-6 mt-auto pt-10" />
+      <div className="rise rise-6 mt-auto flex items-center justify-between pt-10">
+        <SocialLinks placement="rail" />
+        <ThemeToggle />
+      </div>
     </header>
   );
 }
