@@ -21,11 +21,15 @@ export type WorkProject = {
   details: [WorkFrame[], WorkFrame[]];
 };
 
+/* Bump when regenerating placeholders in place, so browsers drop their
+   cached copies. Real screenshots get fresh filenames and don't need it. */
+const PLACEHOLDER_VERSION = 2;
+
 function frames(slug: string, labels: string[]): WorkFrame[] {
   return labels.map((label, i) => ({
     src: `/work/${slug}/${String(i + 1).padStart(2, "0")}-${label
       .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")}.svg`,
+      .replace(/[^a-z0-9]+/g, "-")}.svg?v=${PLACEHOLDER_VERSION}`,
     label,
   }));
 }
