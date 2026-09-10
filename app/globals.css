@@ -27,6 +27,7 @@
   --color-destructive-soft: var(--destructive-soft);
   --color-success: var(--success);
   --color-success-soft: var(--success-soft);
+  --color-success-bright: var(--success-bright);
   --color-warning: var(--warning);
   --color-warning-soft: var(--warning-soft);
   --color-info: var(--info);
@@ -82,6 +83,9 @@
      badge/callout fills — always paired with the solid as the text on top. */
   --destructive: #a92e22;
   --success: #3e6249;
+  /* Live-signal green for the availability dot only: the muted --success
+     reads near-charcoal at 8px. Not for text — contrast is untested. */
+  --success-bright: #1fad58;
   --warning: #7d5410;
   --info: #44567e;
   --destructive-soft: color-mix(in srgb, var(--destructive) 14%, var(--background));
@@ -154,6 +158,7 @@
      so the chips stay visible against the near-black page. */
   --destructive: #ea8177;
   --success: #97c2a3;
+  --success-bright: #4fd984;
   --warning: #d9a862;
   --info: #a9b8dd;
   --destructive-soft: color-mix(in srgb, var(--destructive) 18%, var(--background));
@@ -355,7 +360,33 @@
   transform: scale(0.3);
 }
 
+/* Availability dot: slow breathing pulse to signal "live" */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.75);
+    opacity: 0.45;
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 2.4s cubic-bezier(0.2, 0, 0, 1) infinite;
+}
+
+/* Static poster card (Two Ways In): same sand surface and offset shadow as
+   .card-sand but no hover lift — these cards are not clickable */
+.card-sand-static {
+  background-color: var(--tint-sand);
+  box-shadow: 8px 8px 0 0 var(--shadow-sand);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .pulse-dot {
+    animation: none;
+  }
   .rise,
   .reveal {
     opacity: 1;

@@ -45,6 +45,7 @@ export function FlashImage({
        the click handler owns the interaction (one frame per tap) */
     if (!hoverCapable.current) return;
     setEngaged(true);
+    if (frames.length < 2) return;
     if (reducedMotion.current) {
       setIndex((i) => (i + 1) % frames.length);
       return;

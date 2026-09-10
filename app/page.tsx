@@ -22,10 +22,10 @@ export default function Home() {
         ))}
         <BrandingSection />
         <WebsitesSection />
-        <section className="relative isolate border-b border-border px-6 py-16 text-center sm:px-9 sm:py-22">
-          <ContourLayer className="opacity-25" />
+        <section className="relative isolate border-b border-border px-6 py-20 text-center sm:px-9 sm:py-28">
+          <ContourLayer className="opacity-40" />
           <Reveal>
-            <Eyebrow as="h2" className="mb-11">
+            <Eyebrow as="h2" className="mb-12">
               What clients say
             </Eyebrow>
           </Reveal>

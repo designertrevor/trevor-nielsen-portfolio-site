@@ -23,25 +23,25 @@ const PROOF = [
 
 export function WritingSection() {
   return (
-    <section className="border-b border-border px-6 py-16 text-center sm:px-9 sm:py-20">
+    <section className="border-b border-border px-6 py-20 text-center sm:px-9 sm:py-28">
       <Reveal>
-        <Eyebrow as="h2" className="mb-11">
+        <Eyebrow as="h2" className="mb-12">
           I also think and write about design
         </Eyebrow>
       </Reveal>
       <Reveal
         delay={120}
-        className="mb-9 flex flex-wrap justify-center gap-x-16 gap-y-8"
+        className="mb-12 flex flex-wrap justify-center gap-x-20 gap-y-10"
       >
         {PROOF.map((item) => (
           <div key={item.label}>
-            <p className="font-serif text-4xl font-semibold tracking-tight">
+            <p className="font-serif text-6xl font-semibold tracking-tight sm:text-7xl">
               {item.value}
             </p>
-            <p className="mt-1 text-[13px] text-muted-foreground">
+            <p className="mt-2 text-[15px] text-muted-foreground">
               {item.label}
             </p>
-            <p className="mt-2 text-[13px]">
+            <p className="mt-3 text-[15px]">
               <TrackedLink
                 href={item.href}
                 destination={item.destination}
@@ -55,7 +55,7 @@ export function WritingSection() {
         ))}
       </Reveal>
       <Reveal delay={200}>
-        <p className="mx-auto max-w-[540px] text-[15px] leading-relaxed text-pretty text-muted-foreground">
+        <p className="mx-auto max-w-[620px] text-lg leading-relaxed text-pretty text-muted-foreground">
           Weekly writing on design careers and getting found. Mostly for
           designers, but clients tell me it&apos;s how they knew I could
           think, not just push pixels.

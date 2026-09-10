@@ -5,20 +5,20 @@ import { BRANDS } from "@/lib/work";
 
 export function BrandingSection() {
   return (
-    <article className="border-b border-border px-6 py-12 sm:px-9 sm:py-16">
+    <article className="border-b border-border px-6 py-16 sm:px-9 sm:py-24">
       <Reveal>
         <Eyebrow tone="soft">Also in the toolkit</Eyebrow>
-        <h2 className="mt-2 font-serif text-2xl leading-snug font-semibold tracking-tight text-balance sm:text-3xl">
+        <h2 className="mt-3 font-serif text-3xl leading-[1.1] font-semibold tracking-tight text-balance sm:text-5xl">
           Branding and logos
         </h2>
-        <p className="mt-4 max-w-2xl text-base leading-[1.75] text-muted-foreground">
+        <p className="mt-5 mb-2 max-w-2xl text-lg leading-relaxed text-pretty text-muted-foreground sm:text-xl">
           Marks built for screens first, print always. I started in graphic
           design in 2013 and never stopped drawing logos. A dedicated branding
           page with packages is on the way; until then, here&apos;s a taste,
           and I&apos;m happy to share more on a call.
         </p>
       </Reveal>
-      <Reveal delay={120} className="mt-7 grid gap-4 sm:grid-cols-3">
+      <Reveal delay={120} className="mt-8 grid gap-4 sm:grid-cols-3">
         {BRANDS.map((brand) => (
           <FlashImage
             key={brand.slug}

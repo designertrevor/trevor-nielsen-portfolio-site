@@ -43,7 +43,7 @@ export function CopyEmailButton({ className }: { className?: string }) {
       )}
     >
       <Icon aria-hidden="true" className="size-4 shrink-0" />
-      <span className="grid text-left">
+      <span className="grid text-center">
         <span className={cn("col-start-1 row-start-1", copied && "invisible")}>
           {SITE.email}
         </span>

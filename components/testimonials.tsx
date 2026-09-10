@@ -74,12 +74,12 @@ export function Testimonials() {
       onMouseEnter={() => (pausedRef.current = true)}
       onMouseLeave={() => (pausedRef.current = false)}
     >
-      <blockquote className="mx-auto flex min-h-40 max-w-[720px] items-center justify-center">
-        <p className="font-serif text-[21px] leading-normal font-medium text-balance sm:text-2xl">
+      <blockquote className="mx-auto flex min-h-[260px] max-w-[880px] items-center justify-center sm:min-h-[240px]">
+        <p className="font-serif text-[26px] leading-snug font-medium text-balance sm:text-4xl sm:leading-[1.3]">
           &ldquo;{active.quote}&rdquo;
         </p>
       </blockquote>
-      <p className="mt-5 min-h-[22px] text-sm text-muted-foreground">
+      <p className="mt-6 min-h-[24px] text-[15px] text-muted-foreground">
         {active.attribution}
       </p>
       <div className="mt-9 flex min-h-[76px] items-center justify-center gap-3 sm:gap-5">

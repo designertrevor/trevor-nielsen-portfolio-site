@@ -1,3 +1,4 @@
+import { ArrowRight } from "@/components/arrow-right";
 import { CopyEmailButton } from "@/components/copy-email-button";
 import { ContourLayer, GlowHalftone } from "@/components/texture";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -31,14 +32,14 @@ export function Rail() {
           rail, fading out under the text */}
       <ContourLayer
         density="lightTall"
-        className="opacity-35"
+        className="opacity-50"
         style={{
           backgroundSize: "512px auto",
           backgroundPosition: "bottom",
           maskImage:
-            "linear-gradient(to top, black 25%, rgba(0,0,0,0.3) 55%, transparent 80%)",
+            "linear-gradient(to top, black 25%, rgba(0,0,0,0.45) 55%, transparent 80%)",
           WebkitMaskImage:
-            "linear-gradient(to top, black 25%, rgba(0,0,0,0.3) 55%, transparent 80%)",
+            "linear-gradient(to top, black 25%, rgba(0,0,0,0.45) 55%, transparent 80%)",
         }}
       />
       <div className="rise rise-1 flex items-center justify-between gap-4">
@@ -55,14 +56,35 @@ export function Rail() {
 
       <div className="rise rise-2 relative mt-9 self-start">
         {/* Faint lantern-glow patch centered behind the badge */}
-        <GlowHalftone className="top-1/2 left-1/2 size-[230px] -translate-x-1/2 -translate-y-1/2 opacity-[0.05]" />
-        <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 font-sans text-xs font-semibold">
-          <span aria-hidden="true" className="size-2 rounded-full bg-success" />
-          Available for new projects
-        </span>
+        <GlowHalftone className="top-1/2 left-1/2 size-[230px] -translate-x-1/2 -translate-y-1/2 opacity-[0.09]" />
+        {/* Availability badge doubles as a booking link: the resting label
+            swipes up and away on hover, "Book a 15-minute call" swipes in
+            with the DD arrow reveal */}
+        <TrackedLink
+          href={SITE.booking}
+          destination="tidycal"
+          placement="rail-availability"
+          className="group inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 font-sans text-xs font-semibold"
+        >
+          <span
+            aria-hidden="true"
+            className="pulse-dot size-2 shrink-0 rounded-full bg-success-bright"
+          />
+          <span className="grid overflow-hidden">
+            <span className="col-start-1 row-start-1 whitespace-nowrap transition-transform duration-300 ease-[cubic-bezier(0.2,0,0,1)] group-hover:-translate-y-[130%] motion-reduce:transition-none">
+              Available for new projects
+            </span>
+            <span
+              aria-hidden="true"
+              className="col-start-1 row-start-1 translate-y-[130%] whitespace-nowrap text-center transition-transform duration-300 ease-[cubic-bezier(0.2,0,0,1)] group-hover:translate-y-0 motion-reduce:transition-none"
+            >
+              Book a 15-minute call <ArrowRight className="arrow-reveal" />
+            </span>
+          </span>
+        </TrackedLink>
       </div>
 
-      <h1 className="rise rise-3 mt-5 font-serif text-[34px] leading-[1.1] font-semibold tracking-tight text-balance">
+      <h1 className="rise rise-3 mt-6 font-serif text-[40px] leading-[1.05] font-semibold tracking-tight text-balance">
         Senior product design for teams with a gap to fill.
       </h1>
       <p className="rise rise-3 mt-4 text-[15px] leading-relaxed text-pretty text-muted-foreground">

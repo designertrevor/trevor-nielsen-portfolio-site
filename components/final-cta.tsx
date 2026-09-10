@@ -1,5 +1,5 @@
 import { CopyEmailButton } from "@/components/copy-email-button";
-import { ContourLayer, GlowHalftone } from "@/components/texture";
+import { ContourLayer } from "@/components/texture";
 import { Reveal } from "@/components/reveal";
 import { TrackedLink } from "@/components/tracked-link";
 import { Button } from "@/components/ui/button";
@@ -7,22 +7,19 @@ import { SITE } from "@/lib/site";
 
 export function FinalCta() {
   return (
-    <section className="relative isolate overflow-hidden px-6 py-20 text-center sm:px-9 sm:py-24">
-      <ContourLayer className="opacity-25" />
-      {/* Lantern glow centered behind the heading, a notch above the badge
-          instance but still a whisper */}
-      <GlowHalftone className="top-28 left-1/2 size-[420px] -translate-x-1/2 -translate-y-1/2 opacity-[0.07] sm:top-32" />
+    <section className="relative isolate overflow-hidden px-6 py-24 text-center sm:px-9 sm:py-36">
+      <ContourLayer className="opacity-40" />
       <Reveal>
-        <h2 className="font-serif text-4xl leading-tight font-semibold tracking-tight text-balance sm:text-[44px]">
+        <h2 className="font-serif text-5xl leading-[1.05] font-semibold tracking-tight text-balance sm:text-7xl">
           Have a gap to fill?
         </h2>
-        <p className="mt-3 text-[15px] text-muted-foreground">
+        <p className="mt-5 text-lg text-muted-foreground">
           30 minutes. Bring the situation, leave with a plan.
         </p>
       </Reveal>
       <Reveal
         delay={120}
-        className="mt-7 flex flex-wrap items-center justify-center gap-4"
+        className="mt-10 flex flex-wrap items-center justify-center gap-4"
       >
         <Button
           asChild

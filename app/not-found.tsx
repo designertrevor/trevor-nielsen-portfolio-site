@@ -9,7 +9,7 @@ import { ContourLayer } from "@/components/texture";
 export default function NotFound() {
   return (
     <div className="relative isolate flex min-h-dvh flex-col items-center justify-center px-6 text-center">
-      <ContourLayer density="dense" className="opacity-45" />
+      <ContourLayer density="dense" className="opacity-60" />
       <Eyebrow tone="soft">404</Eyebrow>
       <h1 className="mt-3 font-serif text-4xl leading-tight font-semibold tracking-tight sm:text-5xl">
         Page not found
