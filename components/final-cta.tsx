@@ -11,7 +11,7 @@ export function FinalCta() {
     <section className="px-6 py-16 sm:px-9 sm:py-24">
       {/* Floating box at the same width as the large thumbnails, so the
           footer scene beneath reads as connected background */}
-      <TintPanel className="relative isolate overflow-hidden px-6 py-20 text-center sm:px-12 sm:py-28">
+      <TintPanel className="relative isolate overflow-hidden px-6 py-20 text-center sm:px-12 sm:py-28 dark:bg-(--surface-1)">
         <ContourLayer className="opacity-40" />
         <Reveal>
           <h2 className="font-serif text-5xl leading-[1.05] font-semibold tracking-tight text-balance sm:text-7xl">
@@ -37,7 +37,8 @@ export function FinalCta() {
             Book an intro call
           </TrackedLink>
         </Button>
-          <CopyEmailButton className="w-full sm:w-auto" />
+          {/* border-border vanishes against the tint, so use ink here */}
+          <CopyEmailButton className="w-full border-foreground/25 sm:w-auto" />
         </Reveal>
       </TintPanel>
     </section>

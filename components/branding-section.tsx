@@ -28,12 +28,6 @@ export function BrandingSection() {
           />
         ))}
       </Reveal>
-      <Reveal delay={200}>
-        <p className="mt-3 text-xs text-muted-foreground/80">
-          Saddle Rock · Linkd Performance · Meridian · Bandit · Rivet Health ·
-          Cheal King
-        </p>
-      </Reveal>
     </article>
   );
 }

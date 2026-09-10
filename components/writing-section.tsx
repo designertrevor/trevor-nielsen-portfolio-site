@@ -46,7 +46,7 @@ export function WritingSection() {
                 href={item.href}
                 destination={item.destination}
                 placement="writing"
-                className="group font-semibold underline underline-offset-4 transition-colors hover:text-muted-foreground"
+                className="group font-semibold transition-colors hover:text-muted-foreground"
               >
                 {item.linkText} <ArrowRight />
               </TrackedLink>
@@ -59,10 +59,6 @@ export function WritingSection() {
           Weekly writing on design careers and getting found. Mostly for
           designers, but clients tell me it&apos;s how they knew I could
           think, not just push pixels.
-        </p>
-        <p className="mt-7 text-[13px] text-muted-foreground/80">
-          This site is young and growing. I&apos;m rebuilding it in public,
-          one piece at a time.
         </p>
       </Reveal>
     </section>

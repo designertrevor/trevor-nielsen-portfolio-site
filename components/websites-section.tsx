@@ -42,11 +42,6 @@ export function WebsitesSection() {
           className="aspect-[4/3]"
         />
       </Reveal>
-      <Reveal delay={240}>
-        <p className="mt-4 text-[13px] text-muted-foreground/80">
-          Rock Creek Crates · LabFinder · Nuage · Adan
-        </p>
-      </Reveal>
     </article>
   );
 }

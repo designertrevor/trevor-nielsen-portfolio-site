@@ -25,7 +25,7 @@ export default function Home() {
         <WebsitesSection />
         <section className="px-6 py-16 sm:px-9 sm:py-24">
           {/* Floating box, matching the final CTA treatment */}
-          <TintPanel className="relative isolate overflow-hidden px-6 py-16 text-center sm:px-12 sm:py-20">
+          <TintPanel className="relative isolate overflow-hidden px-6 py-16 text-center sm:px-12 sm:py-20 dark:bg-(--surface-1)">
             <ContourLayer className="opacity-40" />
             <Reveal>
               <Eyebrow as="h2" className="mb-12">

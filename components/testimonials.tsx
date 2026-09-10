@@ -80,8 +80,8 @@ export function Testimonials() {
       onMouseEnter={() => (pausedRef.current = true)}
       onMouseLeave={() => (pausedRef.current = false)}
     >
-      <blockquote className="mx-auto flex min-h-[260px] max-w-[880px] items-center justify-center sm:min-h-[240px]">
-        <p className="font-serif text-[26px] leading-snug font-medium text-balance sm:text-4xl sm:leading-[1.3]">
+      <blockquote className="mx-auto flex min-h-[300px] max-w-[880px] items-center justify-center sm:min-h-[250px]">
+        <p className="font-serif text-[30px] leading-snug font-medium text-balance sm:text-[44px] sm:leading-[1.25]">
           &ldquo;{active.quote}&rdquo;
         </p>
       </blockquote>

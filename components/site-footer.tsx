@@ -8,21 +8,17 @@ export function SiteFooter() {
   return (
     <footer>
       <div className="relative">
+        {/* One artwork, blended instead of pasted: multiply sinks the sky
+            into the paper in light mode; invert + screen turns the same ink
+            into light linework on the dark page. No baked background, no
+            seam, and the drawing sits a register quieter. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/textures/footer-scene-light.webp"
           alt=""
           aria-hidden="true"
           loading="lazy"
-          className="w-full dark:hidden"
-        />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/textures/footer-scene-dark.webp"
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          className="hidden w-full dark:block"
+          className="w-full mix-blend-multiply opacity-90 dark:opacity-45 dark:grayscale dark:invert dark:mix-blend-screen"
         />
         <div
           aria-hidden="true"

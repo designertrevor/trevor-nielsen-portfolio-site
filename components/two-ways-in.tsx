@@ -93,23 +93,11 @@ export function TwoWaysIn() {
               </div>
             </>
           );
-          return way.key === "sprint" ? (
-            /* Emphasized card: sand poster surface, no shadow (not
-               clickable). Dark mode jumps to surface-3 so the two cards
-               separate clearly. */
-            <TintPanel
-              key={way.key}
-              className="flex flex-col p-8 sm:p-12 dark:bg-(--surface-3)"
-            >
+          /* Both cards share one surface: the sand poster panel */
+          return (
+            <TintPanel key={way.key} className="flex flex-col p-8 sm:p-12">
               {inner}
             </TintPanel>
-          ) : (
-            <div
-              key={way.key}
-              className="flex flex-col border border-border bg-card p-8 sm:p-12"
-            >
-              {inner}
-            </div>
           );
         })}
       </Reveal>

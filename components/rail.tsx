@@ -90,7 +90,7 @@ export function Rail() {
         oversight.
       </p>
 
-      <dl className="rise rise-4 mt-7 flex flex-col gap-3">
+      <dl className="rise rise-4 mt-7 flex flex-col gap-2.5">
         {STATS.map((stat) => (
           <div key={stat.label} className="flex items-baseline gap-2">
             <dt className="sr-only">{stat.label}</dt>
@@ -108,7 +108,7 @@ export function Rail() {
                 </span>
               ))}
             </dd>
-            <dd className="text-[13px] text-muted-foreground">{stat.label}</dd>
+            <dd className="text-sm text-muted-foreground">{stat.label}</dd>
           </div>
         ))}
       </dl>
