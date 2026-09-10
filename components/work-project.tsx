@@ -10,7 +10,22 @@ export function WorkProjectSection({ project }: { project: WorkProject }) {
   return (
     <article className="border-b border-border px-6 py-16 sm:px-9 sm:py-24">
       <Reveal>
-        <Eyebrow tone="soft">{project.eyebrow}</Eyebrow>
+        <div className="flex items-center justify-between gap-4">
+          <Eyebrow tone="soft">{project.eyebrow}</Eyebrow>
+          {/* Consistent client-logo slot, right-aligned with the eyebrow */}
+          {project.logo ? (
+            /* eslint-disable-next-line @next/next/no-img-element */
+            <img
+              src={project.logo}
+              alt={`${project.name} logo`}
+              className="h-6 w-auto opacity-80 dark:invert"
+            />
+          ) : (
+            <span className="font-sans text-sm font-extrabold tracking-tight text-muted-foreground">
+              {project.name}
+            </span>
+          )}
+        </div>
         <h2 className="mt-3 font-serif text-3xl leading-[1.1] font-semibold tracking-tight text-balance sm:text-5xl">
           {project.title}
         </h2>

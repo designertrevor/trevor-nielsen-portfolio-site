@@ -40,7 +40,6 @@ const QUOTES = [
 ];
 
 const DURATION = 10_000;
-const STEP = 100;
 
 /* Testimonial selector: initials dots, the active one enlarged with a conic
    progress ring that fills over 10s then auto-advances. Pauses while
@@ -51,20 +50,27 @@ export function Testimonials() {
   const [progress, setProgress] = useState(0);
   const pausedRef = useRef(false);
 
+  /* Frame-driven fill so the ring sweeps smoothly instead of stepping */
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let raf: number;
+    let last = performance.now();
     let elapsed = 0;
-    const raf = requestAnimationFrame(() => setProgress(0));
-    const timer = setInterval(() => {
-      if (pausedRef.current) return;
-      elapsed += STEP;
-      setProgress(Math.min(100, Math.round((elapsed / DURATION) * 100)));
-      if (elapsed >= DURATION) setIndex((i) => (i + 1) % QUOTES.length);
-    }, STEP);
-    return () => {
-      cancelAnimationFrame(raf);
-      clearInterval(timer);
+    const frame = (now: number) => {
+      const dt = now - last;
+      last = now;
+      if (!pausedRef.current) {
+        elapsed += dt;
+        if (elapsed >= DURATION) {
+          setIndex((i) => (i + 1) % QUOTES.length);
+          return;
+        }
+        setProgress((elapsed / DURATION) * 100);
+      }
+      raf = requestAnimationFrame(frame);
     };
+    raf = requestAnimationFrame(frame);
+    return () => cancelAnimationFrame(raf);
   }, [index]);
 
   const active = QUOTES[index];
@@ -101,13 +107,27 @@ export function Testimonials() {
               )}
             >
               {isActive && (
-                <span
-                  aria-hidden="true"
-                  className="absolute -inset-[5px] rounded-full"
-                  style={{
-                    background: `conic-gradient(var(--foreground) ${progress}%, var(--border) 0)`,
-                  }}
-                />
+                <span aria-hidden="true" className="absolute -inset-[5px]">
+                  <span
+                    className="absolute inset-0 rounded-full"
+                    style={{
+                      background: `conic-gradient(var(--foreground) ${progress}%, var(--border) 0)`,
+                    }}
+                  />
+                  {/* Rounded caps on both ends of the arc: one fixed at the
+                      start, one riding the leading edge */}
+                  {progress > 0.5 && (
+                    <>
+                      <span className="absolute top-0 left-1/2 size-[5px] -translate-x-1/2 rounded-full bg-foreground" />
+                      <span
+                        className="absolute inset-0"
+                        style={{ transform: `rotate(${progress * 3.6}deg)` }}
+                      >
+                        <span className="absolute top-0 left-1/2 size-[5px] -translate-x-1/2 rounded-full bg-foreground" />
+                      </span>
+                    </>
+                  )}
+                </span>
               )}
               <span
                 className={cn(

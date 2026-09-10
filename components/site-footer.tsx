@@ -1,39 +1,44 @@
 import { LocalClock } from "@/components/local-clock";
-import { ContourLayer } from "@/components/texture";
 
-/* Footer info line on paper, then the bottom of the scroll fills edge to
-   edge with the hand-drawn terrain illustration (Trevor's scratchy black
-   and white LinkedIn style). Until the real artwork lands, a dense-contour
-   stand-in holds the slot. Drop the final art at
-   public/textures/footer-scene.webp (wide, ~2880px, paper or transparent
-   ground) and swap the placeholder block for an <img>. */
+/* The bottom of the scroll: Trevor's hand-drawn trailhead scene, edge to
+   edge, with the copyright line hugged underneath. The scene ships in a
+   light and a dark version; a soft token-colored fade at the top blends
+   the artwork's sky into the page background in both themes. */
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border">
-      <div className="flex flex-wrap items-center justify-between gap-2.5 px-6 pt-8 pb-4 text-[15px] text-muted-foreground sm:px-9">
+    <footer>
+      <div className="relative">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/textures/footer-scene-light.webp"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          className="w-full dark:hidden"
+        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/textures/footer-scene-dark.webp"
+          alt=""
+          aria-hidden="true"
+          loading="lazy"
+          className="hidden w-full dark:block"
+        />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-0 h-1/4"
+          style={{
+            background:
+              "linear-gradient(to bottom, var(--background), transparent)",
+          }}
+        />
+      </div>
+      <div className="flex flex-wrap items-center justify-between gap-2.5 px-6 pt-3 pb-8 text-[13px] text-muted-foreground sm:px-9">
         <span>
           © Trevor Nielsen · Smithfield, UT · <LocalClock />
         </span>
         {/* TODO: Trevor supplies the real sign-off line */}
         <span className="italic">Fun personal sign-off line goes here</span>
-      </div>
-      <div
-        aria-hidden="true"
-        className="relative isolate mt-6 h-[240px] overflow-hidden sm:h-[340px]"
-      >
-        <ContourLayer
-          density="dense"
-          className="opacity-50"
-          style={{
-            backgroundPosition: "bottom",
-            maskImage: "linear-gradient(to top, black 55%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to top, black 55%, transparent 100%)",
-          }}
-        />
-        <p className="absolute inset-x-6 bottom-8 text-center font-sans text-[11px] font-extrabold tracking-[0.07em] text-muted-foreground/60 uppercase">
-          Illustration slot: hand-drawn terrain scene lands here, edge to edge
-        </p>
       </div>
     </footer>
   );

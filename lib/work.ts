@@ -11,6 +11,10 @@ export type WorkFrame = {
 export type WorkProject = {
   slug: string;
   name: string;
+  /* Path to the client's logo SVG in /public/logos, e.g. "/logos/kleo.svg".
+     Until Trevor drops the file and sets this, the section shows the client
+     name as a wordmark placeholder in the same slot. */
+  logo?: string;
   eyebrow: string;
   title: string;
   intro: string;
@@ -93,7 +97,7 @@ export const PROJECTS: WorkProject[] = [
     slug: "kleo",
     name: "Kleo",
     eyebrow: "When you're going zero to one",
-    title: "Kleo: 70,000 users and $170k in one launch week",
+    title: "70,000 users and $170k in one launch week",
     intro:
       "Kleo gave LinkedIn creators the tools LinkedIn wouldn't build. I joined as founding product designer and designed all of it over 18 months: the Chrome extension, the premium web app, the design system, and the landing pages. The free extension grew to 70,000 users. The paid launch filled 500+ annual seats and brought in $170k in its first week.",
     tag: "Embedded · 18 months",
@@ -115,7 +119,7 @@ export const PROJECTS: WorkProject[] = [
     slug: "dozen",
     name: "Dozen",
     eyebrow: "When you're racing a funding window",
-    title: "Dozen: a two-sided marketplace designed in 3 months",
+    title: "A two-sided marketplace designed in 3 months",
     intro:
       "A founder with a closing funding window needed a full marketplace for local baked goods, like DoorDash for home bakers. I designed the entire seller side in month one, the entire buyer side in month two, and tested and refined in month three. Every goal hit on schedule, and the client came back for a second sprint.",
     tag: "Sprint · 3 months",
@@ -136,7 +140,7 @@ export const PROJECTS: WorkProject[] = [
     slug: "ifit",
     name: "iFIT",
     eyebrow: "When you need senior help while you hire",
-    title: "iFIT: kicking off AI Coach at a global fitness brand",
+    title: "Kicking off AI Coach at a global fitness brand",
     intro:
       "iFIT wanted AI working alongside their celebrity trainers, and someone had to take it from idea to design while the team hired. I kicked off AI Coach with one PM, defined the early flows and screens, and stayed 1 year 8 months as the team's only contractor at a company where contractors typically cycle out fast.",
     tag: "Embedded · 1 yr 8 mo",
