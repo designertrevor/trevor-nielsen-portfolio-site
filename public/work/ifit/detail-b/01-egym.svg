@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="960" viewBox="0 0 1440 960">
-  <rect width="1440" height="960" fill="#ebe4db"/>
-  <rect x="380" y="330" width="680" height="300" fill="none" stroke="#2d1f1a" stroke-opacity="0.35" stroke-dasharray="10 8"/>
-  <text x="50%" y="456" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="34" font-weight="800" letter-spacing="3" fill="#2d1f1a">EGYM</text>
-  <text x="50%" y="508" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="2" fill="#2d1f1a" fill-opacity="0.55">IFIT · PLACEHOLDER · 1/2</text>
-  <text x="50%" y="576" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="17" fill="#2d1f1a" fill-opacity="0.45">Drop the real screenshot in /public/work and update lib/work.ts</text>
+  <rect x="380" y="330" width="680" height="300" fill="none" stroke="#8b8680" stroke-opacity="0.6" stroke-dasharray="10 8"/>
+  <text x="50%" y="456" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="34" font-weight="800" letter-spacing="3" fill="#8b8680">EGYM</text>
+  <text x="50%" y="508" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="2" fill="#8b8680" fill-opacity="0.8">IFIT · PLACEHOLDER · 1/2</text>
+  <text x="50%" y="576" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="17" fill="#8b8680" fill-opacity="0.7">Drop the real screenshot in /public/work and update lib/work.ts</text>
 </svg>

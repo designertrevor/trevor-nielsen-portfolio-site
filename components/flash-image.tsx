@@ -104,9 +104,7 @@ export function FlashImage({
           alt={`${projectName}: ${frame.label}`}
           loading={i === 0 ? "eager" : "lazy"}
           className={cn(
-            /* dark:brightness dims the opaque placeholder frames; drop it
-               once real transparent UI shots land on the tinted ground */
-            "absolute inset-0 h-full w-full object-cover transition-opacity duration-120 dark:brightness-75",
+            "absolute inset-0 h-full w-full object-cover transition-opacity duration-120",
             i === index ? "opacity-100" : "opacity-0"
           )}
         />

@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
-  <rect width="1200" height="900" fill="#ffffff"/>
-  <text x="50%" y="440" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="40" font-weight="800" letter-spacing="4" fill="#2d1f1a">POSTER</text>
-  <text x="50%" y="840" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="24" font-weight="600" letter-spacing="2" fill="#2d1f1a" fill-opacity="0.45">CHEAL KING · PLACEHOLDER · 3/3</text>
+  <text x="50%" y="440" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="40" font-weight="800" letter-spacing="4" fill="#8b8680">POSTER</text>
+  <text x="50%" y="840" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="24" font-weight="600" letter-spacing="2" fill="#8b8680" fill-opacity="0.8">CHEAL KING · PLACEHOLDER · 3/3</text>
 </svg>

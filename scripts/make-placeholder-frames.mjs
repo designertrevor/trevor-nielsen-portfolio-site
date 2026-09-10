@@ -8,12 +8,10 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
-const TINTS = {
-  blue: "#d3d8eb",
-  pink: "#e7dae4",
-  sand: "#ebe4db",
-};
-const INK = "#2d1f1a";
+/* Placeholders are TRANSPARENT: the FlashImage container paints the ground
+   (pastel tint in light mode, gray surface in dark), exactly like the real
+   transparent UI shots will. Mid-gray ink reads on both grounds. */
+const INK = "#8b8680";
 
 const PROJECTS = [
   {
@@ -52,16 +50,14 @@ function slugify(label) {
   return label.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 }
 
-function svg({ name, label, index, total, tint }) {
+function svg({ name, label, index, total }) {
   const w = 1440;
   const h = 960;
-  const bg = TINTS[tint];
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
-  <rect width="${w}" height="${h}" fill="${bg}"/>
-  <rect x="${w / 2 - 340}" y="${h / 2 - 150}" width="680" height="300" fill="none" stroke="${INK}" stroke-opacity="0.35" stroke-dasharray="10 8"/>
+  <rect x="${w / 2 - 340}" y="${h / 2 - 150}" width="680" height="300" fill="none" stroke="${INK}" stroke-opacity="0.6" stroke-dasharray="10 8"/>
   <text x="50%" y="${h / 2 - 24}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="34" font-weight="800" letter-spacing="3" fill="${INK}">${label.toUpperCase()}</text>
-  <text x="50%" y="${h / 2 + 28}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="2" fill="${INK}" fill-opacity="0.55">${name.toUpperCase()} · PLACEHOLDER · ${index}/${total}</text>
-  <text x="50%" y="${h / 2 + 96}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="17" fill="${INK}" fill-opacity="0.45">Drop the real screenshot in /public/work and update lib/work.ts</text>
+  <text x="50%" y="${h / 2 + 28}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="2" fill="${INK}" fill-opacity="0.8">${name.toUpperCase()} · PLACEHOLDER · ${index}/${total}</text>
+  <text x="50%" y="${h / 2 + 96}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="17" fill="${INK}" fill-opacity="0.7">Drop the real screenshot in /public/work and update lib/work.ts</text>
 </svg>
 `;
 }
@@ -87,9 +83,8 @@ function brandSvg({ name, mark, label, index, total }) {
       ? `<text x="50%" y="${h / 2 + 55}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="170" font-weight="800" fill="${INK}">${mark}</text>`
       : `<text x="50%" y="${h / 2 - 10}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="40" font-weight="800" letter-spacing="4" fill="${INK}">${label.toUpperCase()}</text>`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
-  <rect width="${w}" height="${h}" fill="#ffffff"/>
   ${center}
-  <text x="50%" y="${h - 60}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="24" font-weight="600" letter-spacing="2" fill="${INK}" fill-opacity="0.45">${name.toUpperCase()} · PLACEHOLDER · ${index}/${total}</text>
+  <text x="50%" y="${h - 60}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="24" font-weight="600" letter-spacing="2" fill="${INK}" fill-opacity="0.8">${name.toUpperCase()} · PLACEHOLDER · ${index}/${total}</text>
 </svg>
 `;
 }
