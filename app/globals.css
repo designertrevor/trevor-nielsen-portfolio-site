@@ -168,8 +168,11 @@
   --border: color-mix(in srgb, #fff 14%, var(--background));
   --input: color-mix(in srgb, #fff 14%, var(--background));
   --ring: #f7f6f3;
-  /* Behind cream text in the hero, so this one stays dark-adapted. */
-  --tint-blue: color-mix(in srgb, var(--tint-blue-base) 20%, #1d1b19);
+  /* All tints go neutral in dark (matching the DD site's dark treatment):
+     pastel surfaces become gray surface layers, never dark-tinted color.
+     (dd-starter keeps a 20% blue mix on --tint-blue for its hero highlight;
+     this site has no such use, so blue neutralizes too.) */
+  --tint-blue: var(--surface-1);
   --tint-pink: var(--surface-1);
   --tint-sand: var(--surface-1);
   --panel: var(--surface-1);

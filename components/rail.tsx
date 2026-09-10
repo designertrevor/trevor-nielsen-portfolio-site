@@ -2,16 +2,25 @@ import { ArrowRight } from "@/components/arrow-right";
 import { CopyEmailButton } from "@/components/copy-email-button";
 import { SocialLinks } from "@/components/social-links";
 import { ContourLayer, GlowHalftone } from "@/components/texture";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { LocalClock } from "@/components/local-clock";
 import { TrackedLink } from "@/components/tracked-link";
 import { Button } from "@/components/ui/button";
 import { SITE } from "@/lib/site";
 
-const STATS = [
-  { value: "13 yrs", label: "designing products" },
-  { value: "21+", label: "clients in 3 years" },
-  { value: "1yr 8mo", label: "longest engagement" },
+/* Stat values split into number and unit parts so units can render
+   smaller and softer than the figures */
+const STATS: { parts: { text: string; unit?: boolean }[]; label: string }[] = [
+  { parts: [{ text: "13" }, { text: "yrs", unit: true }], label: "designing products" },
+  { parts: [{ text: "21+" }], label: "clients in 3 years" },
+  {
+    parts: [
+      { text: "1" },
+      { text: "yr", unit: true },
+      { text: "8" },
+      { text: "mo", unit: true },
+    ],
+    label: "longest engagement",
+  },
 ];
 
 /* The sticky left rail: the zero-click layer. Collapses to a normal top
@@ -37,11 +46,8 @@ export function Rail() {
         <span className="font-sans text-base font-extrabold tracking-tight">
           trevor nielsen
         </span>
-        <span className="flex items-center gap-1.5">
-          <span className="text-xs text-muted-foreground">
-            Smithfield · <LocalClock />
-          </span>
-          <ThemeToggle className="size-8 sm:size-8" />
+        <span className="text-xs text-muted-foreground">
+          Smithfield · <LocalClock />
         </span>
       </div>
 
@@ -88,7 +94,18 @@ export function Rail() {
           <div key={stat.label} className="flex items-baseline gap-2">
             <dt className="sr-only">{stat.label}</dt>
             <dd className="font-serif text-2xl font-semibold tracking-tight">
-              {stat.value}
+              {stat.parts.map((part, i) => (
+                <span
+                  key={i}
+                  className={
+                    part.unit
+                      ? "mr-1 ml-0.5 text-base font-medium text-foreground/55"
+                      : undefined
+                  }
+                >
+                  {part.text}
+                </span>
+              ))}
             </dd>
             <dd className="text-[13px] text-muted-foreground">{stat.label}</dd>
           </div>
