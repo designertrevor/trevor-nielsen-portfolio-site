@@ -30,7 +30,9 @@ export function ThemeToggle({ className }: { className?: string }) {
       aria-label="Toggle dark mode"
       aria-pressed={hydrated && resolvedTheme === "dark"}
       className={cn(
-        "grid size-9 place-items-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground sm:size-10",
+        /* Bare icon button, matching the social icons: the glyph itself
+           colors on hover, no padding or hover fill box */
+        "cursor-pointer text-muted-foreground transition-colors hover:text-foreground",
         className
       )}
     >

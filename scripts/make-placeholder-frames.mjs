@@ -58,7 +58,6 @@ function svg({ name, label, index, total, tint }) {
   const bg = TINTS[tint];
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
   <rect width="${w}" height="${h}" fill="${bg}"/>
-  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="none" stroke="${INK}" stroke-opacity="0.15"/>
   <rect x="${w / 2 - 340}" y="${h / 2 - 150}" width="680" height="300" fill="none" stroke="${INK}" stroke-opacity="0.35" stroke-dasharray="10 8"/>
   <text x="50%" y="${h / 2 - 24}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="34" font-weight="800" letter-spacing="3" fill="${INK}">${label.toUpperCase()}</text>
   <text x="50%" y="${h / 2 + 28}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="2" fill="${INK}" fill-opacity="0.55">${name.toUpperCase()} · PLACEHOLDER · ${index}/${total}</text>
@@ -89,7 +88,6 @@ function brandSvg({ name, mark, label, index, total }) {
       : `<text x="50%" y="${h / 2 - 10}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="40" font-weight="800" letter-spacing="4" fill="${INK}">${label.toUpperCase()}</text>`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
   <rect width="${w}" height="${h}" fill="#ffffff"/>
-  <rect x="0.5" y="0.5" width="${w - 1}" height="${h - 1}" fill="none" stroke="${INK}" stroke-opacity="0.15"/>
   ${center}
   <text x="50%" y="${h - 60}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="24" font-weight="600" letter-spacing="2" fill="${INK}" fill-opacity="0.45">${name.toUpperCase()} · PLACEHOLDER · ${index}/${total}</text>
 </svg>

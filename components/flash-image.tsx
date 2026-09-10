@@ -87,7 +87,7 @@ export function FlashImage({
   return (
     <figure
       className={cn(
-        "relative cursor-pointer touch-manipulation overflow-hidden outline-1 -outline-offset-1 outline-(--image-outline)",
+        "relative cursor-pointer touch-manipulation overflow-hidden",
         tint ? TINT_BG[tint] : "bg-card",
         className
       )}

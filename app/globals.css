@@ -172,9 +172,9 @@
      pastel surfaces become gray surface layers, never dark-tinted color.
      (dd-starter keeps a 20% blue mix on --tint-blue for its hero highlight;
      this site has no such use, so blue neutralizes too.) */
-  --tint-blue: var(--surface-1);
-  --tint-pink: var(--surface-1);
-  --tint-sand: var(--surface-1);
+  --tint-blue: var(--surface-2);
+  --tint-pink: var(--surface-2);
+  --tint-sand: var(--surface-2);
   --panel: var(--surface-1);
   --shadow-blue: var(--surface-3);
   --shadow-pink: var(--surface-3);
