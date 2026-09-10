@@ -23,6 +23,7 @@ export function WebsitesSection() {
       <Reveal delay={120} className="mt-8">
         <FlashImage
           projectName="Websites"
+          tint="blue"
           frames={WEBSITES}
           className="aspect-[4/5] sm:aspect-[16/10]"
         />
@@ -30,11 +31,13 @@ export function WebsitesSection() {
       <Reveal delay={200} className="mt-5 grid gap-5 sm:grid-cols-2">
         <FlashImage
           projectName="Websites"
+          tint="blue"
           frames={[WEBSITES[1]]}
           className="aspect-[4/3]"
         />
         <FlashImage
           projectName="Websites"
+          tint="blue"
           frames={[WEBSITES[2]]}
           className="aspect-[4/3]"
         />

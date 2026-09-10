@@ -360,32 +360,27 @@
   transform: scale(0.3);
 }
 
-/* Availability dot: slow breathing pulse to signal "live" */
-@keyframes pulse-dot {
-  0%,
-  100% {
+/* Availability dot: the dot holds solid while a ring ripples out from
+   behind it and fades, the classic live-status treatment */
+@keyframes pulse-ring {
+  0% {
     transform: scale(1);
-    opacity: 1;
+    opacity: 0.55;
   }
-  50% {
-    transform: scale(0.75);
-    opacity: 0.45;
+  70%,
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
   }
 }
-.pulse-dot {
-  animation: pulse-dot 2.4s cubic-bezier(0.2, 0, 0, 1) infinite;
-}
-
-/* Static poster card (Two Ways In): same sand surface and offset shadow as
-   .card-sand but no hover lift — these cards are not clickable */
-.card-sand-static {
-  background-color: var(--tint-sand);
-  box-shadow: 8px 8px 0 0 var(--shadow-sand);
+.pulse-ring {
+  animation: pulse-ring 2.2s cubic-bezier(0.2, 0, 0, 1) infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pulse-dot {
+  .pulse-ring {
     animation: none;
+    opacity: 0;
   }
   .rise,
   .reveal {

@@ -1,17 +1,7 @@
 import { LocalClock } from "@/components/local-clock";
+import { SocialLinks } from "@/components/social-links";
 import { ContourLayer } from "@/components/texture";
-import { TrackedLink } from "@/components/tracked-link";
-import { SITE } from "@/lib/site";
-
-const SOCIALS = [
-  { label: "LinkedIn", href: SITE.linkedin, destination: "linkedin" },
-  { label: "X", href: SITE.x, destination: "x" },
-  {
-    label: "Discoverable Designer",
-    href: SITE.newsletter,
-    destination: "discoverable-designer",
-  },
-];
+import { ThemeToggle } from "@/components/theme-toggle";
 
 /* Footer info line on paper, then the bottom of the scroll fills edge to
    edge with the hand-drawn terrain illustration (Trevor's scratchy black
@@ -22,27 +12,18 @@ const SOCIALS = [
 export function SiteFooter() {
   return (
     <footer className="border-t border-border">
-      <div className="flex flex-wrap items-center justify-between gap-2.5 px-6 pt-8 pb-4 text-[13px] text-muted-foreground sm:px-9">
-        <span>
-          © Trevor Nielsen · Smithfield, UT · <LocalClock />
-        </span>
-        {/* TODO: Trevor supplies the real sign-off line */}
-        <span className="italic">Fun personal sign-off line goes here</span>
-        <span>
-          {SOCIALS.map((social, i) => (
-            <span key={social.label}>
-              {i > 0 && " · "}
-              <TrackedLink
-                href={social.href}
-                destination={social.destination}
-                placement="footer"
-                className="transition-colors hover:text-foreground"
-              >
-                {social.label}
-              </TrackedLink>
-            </span>
-          ))}
-        </span>
+      <div className="px-6 pt-8 pb-4 sm:px-9">
+        <div className="flex flex-wrap items-center justify-between gap-2.5 text-[15px] text-muted-foreground">
+          <span>
+            © Trevor Nielsen · Smithfield, UT · <LocalClock />
+          </span>
+          {/* TODO: Trevor supplies the real sign-off line */}
+          <span className="italic">Fun personal sign-off line goes here</span>
+        </div>
+        <div className="mt-7 flex items-center justify-between">
+          <SocialLinks placement="footer" iconClassName="size-6" />
+          <ThemeToggle />
+        </div>
       </div>
       <div
         aria-hidden="true"

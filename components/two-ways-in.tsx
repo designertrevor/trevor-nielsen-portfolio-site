@@ -26,7 +26,7 @@ const WAYS = [
     headline: "Fixed scope",
     includes: [
       "One product, three months, a defined outcome",
-      "Two months of building, one month of testing and finishing",
+      "Two months building, one month testing and finishing",
       "Modeled on real shipped projects",
       "One fixed price, scoped on the intro call",
     ],
@@ -77,7 +77,7 @@ export function TwoWaysIn() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-10 pt-2">
+              <div className="mt-auto pt-10">
                 <Button
                   asChild
                   className="h-13 w-full border-0 px-8 text-[15px] font-semibold hover:bg-foreground/85 active:scale-[0.96]"
@@ -94,9 +94,12 @@ export function TwoWaysIn() {
             </>
           );
           return way.key === "sprint" ? (
+            /* Emphasized card: sand poster surface, no shadow (not
+               clickable). Dark mode jumps to surface-3 so the two cards
+               separate clearly. */
             <TintPanel
               key={way.key}
-              className="card-sand-static flex flex-col p-8 sm:p-12"
+              className="flex flex-col p-8 sm:p-12 dark:bg-(--surface-3)"
             >
               {inner}
             </TintPanel>

@@ -2,11 +2,10 @@
 
 import { track } from "@vercel/analytics";
 
-type TrackedLinkProps = {
+type TrackedLinkProps = React.ComponentPropsWithoutRef<"a"> & {
   href: string;
   destination: string;
   placement: string;
-  className?: string;
   children: React.ReactNode;
 };
 
@@ -16,6 +15,7 @@ export function TrackedLink({
   placement,
   className,
   children,
+  ...rest
 }: TrackedLinkProps) {
   return (
     <a
@@ -24,6 +24,7 @@ export function TrackedLink({
       rel="noopener noreferrer"
       className={className}
       onClick={() => track("Outbound Link", { destination, placement })}
+      {...rest}
     >
       {children}
     </a>

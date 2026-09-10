@@ -12,13 +12,25 @@ const FLASH_MS = 350;
    label and counter chip overlaid ("Premium web app · 2/6"). Reduced motion
    turns the cycle into a single swap to the next frame. On touch, a tap
    advances one frame. */
+const TINT_BG = {
+  blue: "bg-tint-blue",
+  pink: "bg-tint-pink",
+  sand: "bg-tint-sand",
+} as const;
+
 export function FlashImage({
   projectName,
   frames,
+  tint,
   className,
 }: {
   projectName: string;
   frames: WorkFrame[];
+  /* Ground behind the frames. The tint tokens darken themselves in dark
+     mode (DD rules), so when Trevor's transparent UI shots replace the
+     opaque placeholders, dark mode stops being a wall of bright panels.
+     Omit for a plain card ground (brand tiles). */
+  tint?: keyof typeof TINT_BG;
   className?: string;
 }) {
   const [index, setIndex] = useState(0);
@@ -76,8 +88,10 @@ export function FlashImage({
     <figure
       className={cn(
         "relative cursor-pointer touch-manipulation overflow-hidden outline-1 -outline-offset-1 outline-(--image-outline)",
+        tint ? TINT_BG[tint] : "bg-card",
         className
       )}
+      style={{ backgroundImage: "var(--grain)" }}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
       onClick={handleTap}
@@ -90,7 +104,9 @@ export function FlashImage({
           alt={`${projectName}: ${frame.label}`}
           loading={i === 0 ? "eager" : "lazy"}
           className={cn(
-            "absolute inset-0 h-full w-full object-cover transition-opacity duration-120",
+            /* dark:brightness dims the opaque placeholder frames; drop it
+               once real transparent UI shots land on the tinted ground */
+            "absolute inset-0 h-full w-full object-cover transition-opacity duration-120 dark:brightness-75",
             i === index ? "opacity-100" : "opacity-0"
           )}
         />

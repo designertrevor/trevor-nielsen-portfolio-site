@@ -22,6 +22,7 @@ export function WorkProjectSection({ project }: { project: WorkProject }) {
         <FlashImage
           projectName={project.name}
           frames={project.hero}
+          tint={project.tint}
           className="aspect-[4/5] sm:aspect-[16/10]"
         />
       </Reveal>
@@ -31,6 +32,7 @@ export function WorkProjectSection({ project }: { project: WorkProject }) {
             key={frames[0].src}
             projectName={project.name}
             frames={frames}
+            tint={project.tint}
             className="aspect-[4/3]"
           />
         ))}

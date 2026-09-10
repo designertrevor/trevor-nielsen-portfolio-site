@@ -1,5 +1,6 @@
 import { ArrowRight } from "@/components/arrow-right";
 import { CopyEmailButton } from "@/components/copy-email-button";
+import { SocialLinks } from "@/components/social-links";
 import { ContourLayer, GlowHalftone } from "@/components/texture";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LocalClock } from "@/components/local-clock";
@@ -11,16 +12,6 @@ const STATS = [
   { value: "13 yrs", label: "designing products" },
   { value: "21+", label: "clients in 3 years" },
   { value: "1yr 8mo", label: "longest engagement" },
-];
-
-const SOCIALS = [
-  { label: "LinkedIn", href: SITE.linkedin, destination: "linkedin" },
-  { label: "X", href: SITE.x, destination: "x" },
-  {
-    label: "Discoverable Designer",
-    href: SITE.newsletter,
-    destination: "discoverable-designer",
-  },
 ];
 
 /* The sticky left rail: the zero-click layer. Collapses to a normal top
@@ -66,10 +57,10 @@ export function Rail() {
           placement="rail-availability"
           className="group inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 font-sans text-xs font-semibold"
         >
-          <span
-            aria-hidden="true"
-            className="pulse-dot size-2 shrink-0 rounded-full bg-success-bright"
-          />
+          <span aria-hidden="true" className="relative size-2 shrink-0">
+            <span className="pulse-ring absolute inset-0 rounded-full bg-success-bright" />
+            <span className="absolute inset-0 rounded-full bg-success-bright" />
+          </span>
           <span className="grid overflow-hidden">
             <span className="col-start-1 row-start-1 whitespace-nowrap transition-transform duration-300 ease-[cubic-bezier(0.2,0,0,1)] group-hover:-translate-y-[130%] motion-reduce:transition-none">
               Available for new projects
@@ -120,21 +111,7 @@ export function Rail() {
         <CopyEmailButton className="w-full" />
       </div>
 
-      <p className="rise rise-6 mt-auto pt-10 text-[13px] text-muted-foreground">
-        {SOCIALS.map((social, i) => (
-          <span key={social.label}>
-            {i > 0 && " · "}
-            <TrackedLink
-              href={social.href}
-              destination={social.destination}
-              placement="rail"
-              className="transition-colors hover:text-foreground"
-            >
-              {social.label}
-            </TrackedLink>
-          </span>
-        ))}
-      </p>
+      <SocialLinks placement="rail" className="rise rise-6 mt-auto pt-10" />
     </header>
   );
 }
