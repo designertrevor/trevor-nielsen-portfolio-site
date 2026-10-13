@@ -1,6 +1,6 @@
 # Trevor Nielsen Portfolio Site
 
-Trevor's personal portfolio site, served at https://trevornielsen.com. This branch holds the MVP rebuild: a single-page freelance portfolio (sticky left rail + scrolling work column) that converts founders and product leaders into intro calls. It replaces the handwritten-note placeholder still live on `main`; do not push to `main` until Trevor says to go live.
+Trevor's personal portfolio site, served at https://trevornielsen.com. This branch (`product-design-mvp`) holds the product-design-only MVP: per a call with Hang (2026-10-12), launch focuses solely on product design work. Branding/logo and websites sections were cut to ship faster and are preserved on `archive/full-portfolio` (tag `full-portfolio-v1`); bring them back later from there, don't re-add them here unprompted. The MVP rebuild: a single-page freelance portfolio (sticky left rail + scrolling work column) that converts founders and product leaders into intro calls. It replaces the handwritten-note placeholder still live on `main`; do not push to `main` until Trevor says to go live.
 
 Source-of-truth split for this build:
 - **Structure, section order, copy, and interaction behavior** come from Trevor's wireframe (`trevornielsen-mvp-wireframe.html`, kept outside the repo). Copy is verbatim; no em dashes anywhere; bracketed placeholders like `[Last name]` are deliberate visible TODOs. Do not add sections the wireframe doesn't have.
@@ -13,7 +13,7 @@ Notes:
 - Fonts load in `app/layout.tsx` via `next/font/google`: Crimson Pro (`--font-crimson` → `font-serif`) and Manrope (`--font-manrope` → `font-sans`).
 - Canonical links (TidyCal booking is still a placeholder) live in `lib/site.ts`.
 - Work imagery is config-driven: frames are files under `public/work/<slug>/`, listed in `lib/work.ts` (one line per frame). Current SVGs are generated placeholders (`scripts/make-placeholder-frames.mjs`); real screenshots replace them file-for-file.
-- Interactive pieces are client components: `FlashImage` (hover-flash cycling), `WebsiteCycler`, `Testimonials` (10s conic progress ring), `LocalClock` (America/Denver), `CopyEmailButton`. All respect `prefers-reduced-motion`.
+- Interactive pieces are client components: `FlashImage` (hover-flash cycling), `Testimonials` (10s conic progress ring), `LocalClock` (America/Denver), `CopyEmailButton`. All respect `prefers-reduced-motion`.
 - Dark mode: next-themes + the DD `.dark` palette in globals; `ThemeToggle` (DD sun/moon morph) sits beside the clock in the rail. Never pass `disableTransitionOnChange`.
 - Texture system (`components/texture.tsx`): wayfinding/terrain layers — contour webp art in `public/textures/`, procedural glow/grid SVG. Textures whisper (≤~10% perceived ink), never behind or over work screenshots, static only, and flip to inverted screen-blend on dark grounds. Draw contour art at native device pixels; never let `cover` upscale it.
 

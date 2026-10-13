@@ -29,7 +29,7 @@ export function FlashImage({
   /* Ground behind the frames. The tint tokens darken themselves in dark
      mode (DD rules), so when Trevor's transparent UI shots replace the
      opaque placeholders, dark mode stops being a wall of bright panels.
-     Omit for a plain card ground (brand tiles). */
+     Omit for a plain card ground. */
   tint?: keyof typeof TINT_BG;
   className?: string;
 }) {

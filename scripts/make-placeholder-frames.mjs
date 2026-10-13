@@ -62,33 +62,6 @@ function svg({ name, label, index, total }) {
 `;
 }
 
-const BRANDS = [
-  { slug: "saddle-rock", name: "Saddle Rock", mark: "SR", labels: ["Mark", "Signage", "Business card", "App icon"] },
-  { slug: "linkd-performance", name: "Linkd Performance", mark: "▲▲", labels: ["Mark", "Signage", "Business card", "App icon"] },
-  { slug: "meridian", name: "Meridian", mark: "M◈", labels: ["Mark", "Signage", "Business card", "App icon"] },
-  { slug: "bandit", name: "Bandit", mark: "BB", labels: ["Mark", "Packaging", "Tote", "Sticker"] },
-  { slug: "rivet-health", name: "Rivet Health", mark: "RH", labels: ["Mark", "Style guide", "App icon"] },
-  { slug: "cheal-king", name: "Cheal King", mark: "CK", labels: ["Mark", "Badge set", "Poster"] },
-];
-
-const WEBSITES = ["Rock Creek Crates", "LabFinder", "Nuage", "Adan"];
-const WEBSITE_TINTS = ["sand", "blue", "pink", "sand"];
-
-/* Brand tiles: white card surface; the first frame shows the mark itself */
-function brandSvg({ name, mark, label, index, total }) {
-  const w = 1200;
-  const h = 900;
-  const center =
-    index === 1
-      ? `<text x="50%" y="${h / 2 + 55}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="170" font-weight="800" fill="${INK}">${mark}</text>`
-      : `<text x="50%" y="${h / 2 - 10}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="40" font-weight="800" letter-spacing="4" fill="${INK}">${label.toUpperCase()}</text>`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
-  ${center}
-  <text x="50%" y="${h - 60}" text-anchor="middle" font-family="Manrope, system-ui, sans-serif" font-size="24" font-weight="600" letter-spacing="2" fill="${INK}" fill-opacity="0.8">${name.toUpperCase()} · PLACEHOLDER · ${index}/${total}</text>
-</svg>
-`;
-}
-
 let count = 0;
 for (const project of PROJECTS) {
   for (const [set, labels] of Object.entries(project.sets)) {
@@ -104,30 +77,4 @@ for (const project of PROJECTS) {
     });
   }
 }
-for (const brand of BRANDS) {
-  const dir = join("public", "work", "brands", brand.slug);
-  mkdirSync(dir, { recursive: true });
-  brand.labels.forEach((label, i) => {
-    const file = join(dir, `${String(i + 1).padStart(2, "0")}-${slugify(label)}.svg`);
-    writeFileSync(
-      file,
-      brandSvg({ name: brand.name, mark: brand.mark, label, index: i + 1, total: brand.labels.length })
-    );
-    count++;
-  });
-}
-
-{
-  const dir = join("public", "work", "websites");
-  mkdirSync(dir, { recursive: true });
-  WEBSITES.forEach((label, i) => {
-    const file = join(dir, `${String(i + 1).padStart(2, "0")}-${slugify(label)}.svg`);
-    writeFileSync(
-      file,
-      svg({ name: "Websites", label, index: i + 1, total: WEBSITES.length, tint: WEBSITE_TINTS[i] })
-    );
-    count++;
-  });
-}
-
 console.log(`Wrote ${count} placeholder frames.`);
