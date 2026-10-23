@@ -509,3 +509,73 @@
   border-top: 1px solid var(--border);
   margin: 2rem 0;
 }
+/* ===== Virtual office (desk prototype) ===== */
+
+/* Hand-off from the desk zoom: the visitor is already looking at this page
+   inside the monitor, so its load cascade must not replay */
+.from-desk .rise {
+  opacity: 1;
+  animation: none;
+}
+
+/* Desk objects lift a touch when you reach for them */
+.desk-hot {
+  cursor: pointer;
+  outline: none;
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), filter 0.25s;
+}
+.desk-hot:hover,
+.desk-hot:focus-visible {
+  transform: translateY(-5px);
+}
+.desk-hot:focus-visible {
+  filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 2px #2d1f1a);
+}
+@media (prefers-reduced-motion: reduce) {
+  .desk-hot {
+    transition: none;
+  }
+  .desk-hot:hover,
+  .desk-hot:focus-visible {
+    transform: none;
+  }
+}
+
+/* The monitor glass: a soft glare on hover says "this is the way in" */
+.desk-screen {
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.18), transparent 45%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.desk-screen:hover,
+.desk-screen:focus-visible {
+  opacity: 1;
+}
+.desk-screen:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -3px;
+}
+
+/* Safari bar blending (seamless-mobile-safari). The desk sets these colors
+   from its live lighting; strips only render where the desk mounts them. */
+.edge-top::after,
+.edge-bottom::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 2147483647;
+}
+.edge-top::after {
+  top: 0;
+  height: max(12px, env(safe-area-inset-top));
+  background: var(--edge-top-background);
+}
+.edge-bottom::after {
+  bottom: 0;
+  height: max(12px, env(safe-area-inset-bottom));
+  background: var(--edge-bottom-background);
+}

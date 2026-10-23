@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { ArrowRight } from "@/components/arrow-right";
 import { CopyEmailButton } from "@/components/copy-email-button";
 import { SocialLinks } from "@/components/social-links";
@@ -48,7 +50,11 @@ export function Rail() {
           trevor nielsen
         </span>
         <span className="text-xs text-muted-foreground">
-          Smithfield · <LocalClock />
+          {/* Prototype: zooms back out into the virtual office */}
+          <Link href="/desk?from=site" className="underline-offset-2 hover:text-foreground hover:underline">
+            Smithfield
+          </Link>{" "}
+          · <LocalClock />
         </span>
       </div>
 
